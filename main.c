@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+#include <runge.c>
+
+
+float f_prima_1(float y1, float y2);
+float f_prima_2(float y1, float y2);
+void rungeKuttaCuartoOrden(float* x, float *y_1, float *y_2, float h, int n_pasos);
+
+int main(){
+
+  float h = 0.1;
+  int n_pasos = ((1 + h)/h);
+  float* x;
+  float* y_1;
+  float* y_2;
+//	float* y_prima_1;
+//	float* y_prima_2;
+ 
+  x = malloc(n_pasos*sizeof(float));  
+  y_1 = malloc(n_pasos*sizeof(float));
+  y_2 = malloc(n_pasos*sizeof(float));
+//  y_prima_1 = malloc(n_pasos*sizeof(float));
+
+//  y_prima_2 = malloc(n_pasos*sizeof(float));
+
+  if(!x || !y_1 || !y_2){
+    printf("Problema con memoria");
+    exit(1);
+  }
+
+rungeKuttaCuartoOrden( x, y_1, y_2, h, n_pasos);
+
+
+}
